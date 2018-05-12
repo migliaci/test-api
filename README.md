@@ -23,7 +23,7 @@ From the project directory (~/test-api-parent), run the following to run the uni
 > gradle build
 > gradle copyWarForIntellij -Pintellij-build
 
-This should create a WAR in the test-api-webapp/build/libs directory that can be deployed to Tomcat (you want the non-snapshot version if you're setting this up in IntelliJ - otherwise, the snapshot version is fine too). 
+This should create a WAR in the test-api-webapp/build/libs directory that can be deployed to Tomcat (you want the non-snapshot version, test-api-webapp.war). 
 
 Copy this WAR into the /apache-tomcat-7.0.86/webapps directory.
 
