@@ -14,6 +14,13 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import java.io.IOException;
 
+/**
+ * Allows exceptions to be mapped to String responses with various error codes.
+ * Intercepts the Tomcat stack-trace-of-doom for most of the exception cases
+ * that can occur.
+ *
+ * @Author migliaci
+ */
 @RestControllerAdvice(assignableTypes = {ProductResource.class})
 public class ErrorResponseExceptionHandler extends ResponseEntityExceptionHandler {
 

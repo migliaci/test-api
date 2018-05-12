@@ -43,7 +43,4 @@ public class ProductRequest {
         this.currentPrice = currentPrice;
     }
 
-    /*
-    {"id":13860428,"name":"The Big Lebowski (Blu-ray) (Widescreen)","current_price":{"value": 13.49,"currency_code":"USD"}}
-     */
 }

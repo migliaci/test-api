@@ -1,5 +1,10 @@
 package com.migliaci.myretail.domain;
 
+/**
+ * POJO representing top-layer element returned from myRetail API.
+ *
+ * @Author migliaci
+ */
 public class RetailElement {
 
     private Product product;

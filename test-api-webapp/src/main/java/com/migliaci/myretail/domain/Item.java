@@ -2,6 +2,11 @@ package com.migliaci.myretail.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * POJO representing item element returned from myRetail API.
+ *
+ * @Author migliaci
+ */
 public class Item {
 
     @JsonProperty("tcin")

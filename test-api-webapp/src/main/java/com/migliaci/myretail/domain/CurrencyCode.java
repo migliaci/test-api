@@ -1,5 +1,11 @@
 package com.migliaci.myretail.domain;
 
+/**
+ * Enum representing currencyCode for prices stored in myRetail solution.
+ * Currently only USD is supported, but more currencies can be added later.
+ *
+ * @Author migliaci
+ */
 public enum CurrencyCode {
     USD; //US Dollar
 

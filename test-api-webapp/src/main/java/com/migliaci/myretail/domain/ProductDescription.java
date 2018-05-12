@@ -2,6 +2,11 @@ package com.migliaci.myretail.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * POJO representing product description element returned from myRetail API.
+ *
+ * @Author migliaci
+ */
 public class ProductDescription {
 
     private String title;

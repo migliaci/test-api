@@ -14,6 +14,11 @@ import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.util.Date;
 
+/**
+ * DAO to retrieve pricing information from Cassandra.
+ *
+ * @Author migliaci
+ */
 @Component
 public class PricingInformationDao {
 
@@ -32,9 +37,13 @@ public class PricingInformationDao {
     @PostConstruct
     public void setupPreparedStatements() {
         try {
+            //prepare queries for both read and write.
             writePriceInformation = session.prepare("INSERT INTO " + keyspace + ".pricing_metadata (id, value, currency_code, updt_ts) VALUES (?, ?, ?, ?)");
             readPriceInformation = session.prepare("SELECT ID, VALUE, CURRENCY_CODE, UPDT_TS FROM " + keyspace + ".pricing_metadata WHERE ID = ?");
         } catch (InvalidQueryException iqe) {
+            //Argument can be made as to whether or not we should start up if keyspace isn't created.
+            //For now, we'll still start up (support for testing later, ops concerns, etc).
+            //if Cassandra keyspace does not exist, this error will appear in logs.
             System.out.println("Error! Keyspace does not exist. Data will need to be generated before API will return valid results.");
         }
 
@@ -45,6 +54,7 @@ public class PricingInformationDao {
         PricingInformation finalResult = null;
 
         try {
+            //bind statement and execute read
             BoundStatement readStatement = readPriceInformation.bind(id);
             ResultSet rs = session.execute(readStatement);
             if (rs.getAvailableWithoutFetching() == 0) {
@@ -63,6 +73,7 @@ public class PricingInformationDao {
             }
 
         } catch (Exception e) {
+            //error occurred when trying to read. Throw this error up the chain.
             throw new DataAccessException("readPricingInformation failed", e);
         }
         return finalResult;
@@ -83,6 +94,7 @@ public class PricingInformationDao {
                 result = rs.wasApplied();
             }
         } catch (Exception e) {
+            //error occurred when trying to write. Throw this error up the chain.
             throw new DataAccessException("writePricingInformation failed", e);
         }
         return result;

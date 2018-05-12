@@ -46,19 +46,20 @@ public class ProductResource {
 
     @PutMapping(value = "/{id}", produces = MediaType.TEXT_PLAIN_VALUE)
     @ApiOperation(value = "Updates pricing information for a given ID", notes = "Returns product information for a given ID")
-    @ApiResponses(value = {@ApiResponse(code = 200, message = "OK")})
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "OK"), @ApiResponse(code = 400, message="Bad Request"),
+            @ApiResponse(code = 503, message = "Service Unavailable"), @ApiResponse(code = 404, message = "Not Found")})
     public ResponseEntity<String> putProductPrice(@PathVariable String id, @RequestBody ProductRequest request) {
 
         //make sure id and pricing information conform to expected values, return immediately if not.
         //some additional validation could be added here at object-level to provide more feedback to user.
-        ValidationUtil.validatePositiveBigInteger(id, "id");
+        ValidationUtil.validatePositiveBigInteger(id.trim(), "id");
         ValidationUtil.validateNotNull(request.getCurrentPrice(), "pricingInformation");
         ValidationUtil.validatePositive(request.getCurrentPrice().getValue(), "value");
 
         //if user provided a strange decimal, do any currencyCode-specific math via CurrencyUtil.
         request.getCurrentPrice().setValue(CurrencyUtil.transformPrice(request.getCurrentPrice().getValue(), request.getCurrentPrice().getCurrencyCode()));
 
-        boolean updated = productApiService.updateProductPrice(id, request);
+        boolean updated = productApiService.updateProductPrice(id.trim(), request);
         if(updated) {
             return ResponseEntity.status(200).body("Price modification completed successfully.");
         } else {
