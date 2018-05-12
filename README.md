@@ -18,7 +18,7 @@ Once it's finished loading, populate the keyspace needed for the project by load
 
 >./dse/bin/cqlsh -f ~/test-api-parent/test-api-webapp/src/main/resources/config/data/cql/insert_default_pricing_metadata.cql
 
-From the project directory (~/test-api-parent), run the following to kick off the unit tests and create the WAR:
+From the project directory (~/test-api-parent), run the following to run the unit tests and create the WAR:
 
 > gradle build
 > gradle copyWarForIntellij -Pintellij-build
@@ -33,12 +33,14 @@ Start Tomcat:
 # navigation 
 http://localhost:8080/test-api-webapp/api/swagger-ui.html
 
+# note on PUT endpoint
+Right now the PUT endpoint JSON document mirrors the one returned from GET, with the single exception being the id has moved to the uri, so it isn't duplicated in the request body.  The only field that is being explicitly checked at this time is currentPrice, but this has been designed with future updates in mind.
+
 # troubleshooting
 
 If Cassandra isn't running, navigating to the URL above will produce a 404.
 
 If Cassandra is running but the myretail keyspace has not been set up per loading insert_default_pricing_metadata.cql via the method described above, both the GET and PUT endpoints will return 503 Service Unavailable.
-
 
 
 
