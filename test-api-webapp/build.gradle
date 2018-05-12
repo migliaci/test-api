@@ -38,18 +38,18 @@ dependencies {
     compile "com.datastax.cassandra:cassandra-driver-extras:${cassandraVersion}"
     compile "io.springfox:springfox-swagger2:${swaggerVersion}"
     compile "io.springfox:springfox-swagger-ui:${swaggerVersion}"
-    compile "com.sun.jersey:jersey-client:1.8"
-    compile "org.apache.commons:commons-lang3:3.2.1"
+    compile "com.sun.jersey:jersey-client:${jerseyVersion}"
+    compile "org.apache.commons:commons-lang3:${commonsLangVersion}"
     compile("org.codehaus.groovy:groovy-all:${groovyVersion}") {
         exclude(module: 'javax.servlet-api')
     }
-    compile "org.glassfish.hk2.external:javax.inject:2.2.0"
-    compile "org.apache.httpcomponents:httpclient:4.3.5"
-    compile "org.objenesis:objenesis:2.2"
-    compile "net.sf.ehcache:ehcache:2.9.1"
-    providedCompile "javax.servlet:javax.servlet-api:3.0.1"
-    compile "org.apache.httpcomponents:httpcore-nio:4.3.2"
-    compile "com.fasterxml.jackson.core:jackson-databind:2.8.6"
+    compile "org.glassfish.hk2.external:javax.inject:${javaxInjectVersion}"
+    compile "org.apache.httpcomponents:httpclient:${httpClientVersion}"
+    compile "org.objenesis:objenesis:${objenesisVersion}"
+    compile "net.sf.ehcache:ehcache:${ehCacheVersion}"
+    providedCompile "javax.servlet:javax.servlet-api:${servletApiVersion}"
+    compile "org.apache.httpcomponents:httpcore-nio:${httpCoreVersion}"
+    compile "com.fasterxml.jackson.core:jackson-databind:${jacksonDatabindVersion}"
     compile "org.cassandraunit:cassandra-unit:${cassandraUnitVersion}"
     testCompile("org.cassandraunit:cassandra-unit:${cassandraUnitVersion}") {
         exclude(module: 'jackson-core-asl')
@@ -63,7 +63,7 @@ dependencies {
     testCompile "org.spockframework:spock-core:${spockVersion}"
     testCompile "org.spockframework:spock-spring:${spockVersion}"
     testCompile "org.springframework:spring-test:${springVersion}"
-    testCompile "cglib:cglib-nodep:2.2"
+    testCompile "cglib:cglib-nodep:${cglibVersion}"
     integrationTestCompile "org.cassandraunit:cassandra-unit:${cassandraUnitVersion}"
     integrationTestCompile "org.springframework:spring-test:${springVersion}"
     integrationTestCompile "org.spockframework:spock-core:${spockVersion}"

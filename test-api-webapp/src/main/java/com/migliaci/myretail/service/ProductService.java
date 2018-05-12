@@ -56,6 +56,8 @@ public class ProductService {
 
         //update request with correct id value, which has already been validated.
         productRequest.getCurrentPrice().setId(id);
+        //currently can update prices for ids that do not exist in myRetail.
+        //choice was made because this application has no control over myRetail - who updates first?
         return pricingInformationRepository.writePricingInformation(productRequest.getCurrentPrice());
     }
 
