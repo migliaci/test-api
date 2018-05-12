@@ -1,0 +1,4 @@
+rootProject.name = 'test-api-parent'
+include ':test-api-webapp'
+
+project(':test-api-webapp').projectDir = "$rootDir/test-api-webapp" as File
