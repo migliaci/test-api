@@ -51,7 +51,8 @@ public class PricingInformationCacheRepository implements PricingInformationRepo
 
     public boolean writePricingInformation(PricingInformation pricingInformation) {
         //Making a conscious choice here to allow users to add pricing information for items
-        //that don't exist yet in datastore.
+        //that are not found when calling myRetail via restClient.
+        //Reasoning: what if myRetail is updated to add those ids?
         //However, need to expire the value in cache and add new value if this is added via update.
         boolean result = false;
 
@@ -68,6 +69,5 @@ public class PricingInformationCacheRepository implements PricingInformationRepo
 
         return result;
     }
-
 
 }

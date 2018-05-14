@@ -8,6 +8,13 @@ import org.springframework.stereotype.Repository;
 
 import javax.ws.rs.WebApplicationException;
 
+/**
+ * Repository for managing read/write to database.
+ * It will throw a MissingDataException if information
+ * could not be retrieved.
+ *
+ * @Author migliaci
+ */
 @Repository
 public class PricingInformationDbRepository implements PricingInformationRepository {
 
@@ -16,6 +23,7 @@ public class PricingInformationDbRepository implements PricingInformationReposit
 
     public PricingInformation readPricingInformation(String id) {
 
+        //attempt read
         PricingInformation result = dao.readPricingInformation(id);
         if (result == null) {
             throw new MissingDataException("Pricing information for ID=" + id + " not found in datastore");
