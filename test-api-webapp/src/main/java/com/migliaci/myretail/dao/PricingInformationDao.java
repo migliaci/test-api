@@ -99,5 +99,4 @@ public class PricingInformationDao {
         }
         return result;
     }
-
 }

@@ -60,5 +60,4 @@ public class ProductService {
         //choice was made because this application has no control over data retrieved from that resource.
         return pricingInformationRepository.writePricingInformation(productRequest.getCurrentPrice());
     }
-
 }

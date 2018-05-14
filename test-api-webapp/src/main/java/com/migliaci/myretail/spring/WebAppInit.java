@@ -34,5 +34,4 @@ public class WebAppInit implements WebApplicationInitializer {
         dispatcher.addMapping(SPRING_ROOT + "/*");
 
     }
-
 }

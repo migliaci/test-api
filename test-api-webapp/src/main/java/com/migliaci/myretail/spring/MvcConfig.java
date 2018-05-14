@@ -38,15 +38,4 @@ public class MvcConfig extends WebMvcConfigurationSupport {
         registry.addResourceHandler("/webjars/**")
                 .addResourceLocations("classpath:/META-INF/resources/webjars/");
     }
-
-
-//    @Override
-//    protected void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-//        StringHttpMessageConverter stringConverter = new StringHttpMessageConverter();
-//        stringConverter.setWriteAcceptCharset(false);
-//
-//        converters.add(new ByteArrayHttpMessageConverter());
-//        converters.add(stringConverter);
-//        converters.add(customJackson2HttpMessageConverter());
-//    }
 }

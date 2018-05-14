@@ -80,8 +80,5 @@ public class MyRetailRestClient {
                     .append("?excludes=")
                     .append(exclusions).toString();
         }
-
     }
-
-
 }

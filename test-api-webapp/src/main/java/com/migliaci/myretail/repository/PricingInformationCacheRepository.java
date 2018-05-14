@@ -69,5 +69,4 @@ public class PricingInformationCacheRepository implements PricingInformationRepo
 
         return result;
     }
-
 }

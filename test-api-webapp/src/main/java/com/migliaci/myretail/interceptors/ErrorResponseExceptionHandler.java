@@ -79,5 +79,4 @@ public class ErrorResponseExceptionHandler extends ResponseEntityExceptionHandle
         headers.add("Content-Type", "text/plain");
         return headers;
     }
-
 }

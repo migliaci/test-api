@@ -19,5 +19,4 @@ public enum CurrencyCode {
             throw new IllegalArgumentException("invalid currency code: " + potentialCode + " (no such code)");
         }
     }
-
 }
