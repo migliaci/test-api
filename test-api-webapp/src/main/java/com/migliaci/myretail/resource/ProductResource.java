@@ -55,7 +55,7 @@ public class ProductResource {
         ValidationUtil.validatePositiveBigInteger(id.trim(), "id");
         ValidationUtil.validateNotNull(request.getCurrentPrice(), "pricingInformation");
         ValidationUtil.validatePositive(request.getCurrentPrice().getValue(), "value");
-
+        ValidationUtil.validateNotNull(request.getCurrentPrice().getCurrencyCode(), "currencyCode");
         //if user provided a strange decimal, do any currencyCode-specific math via CurrencyUtil.
         request.getCurrentPrice().setValue(CurrencyUtil.transformPrice(request.getCurrentPrice().getValue(), request.getCurrentPrice().getCurrencyCode()));
 
